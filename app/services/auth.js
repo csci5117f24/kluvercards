@@ -23,6 +23,7 @@ export default class AuthService extends Service {
   // Otherwise you can run into issues accessing the data before it's loaded
   async ensureInitialized() {
     await this.auth.authStateReady();
+    this.user = this.auth.currentUser;
   }
 
   async ensureLoggedIn() {
