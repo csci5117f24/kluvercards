@@ -50,6 +50,7 @@ export default class AuthService extends Service {
 
   @action
   async sign_out() {
+    console.log(this.auth.currentUser)
     signOut(this.auth);
   }
 }

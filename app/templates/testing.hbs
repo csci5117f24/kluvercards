@@ -1,0 +1,10 @@
+{{page-title "Testing"}}
+{{outlet}}
+<div>
+{{#if this.auth.user}}
+<img referrerpolicy="no-referrer" src="{{this.auth.user.photoURL}}">{{this.auth.user.displayName}}
+    <button {{on "click" this.auth.sign_out}}>Sign Out</button>
+{{else}}
+    <button {{on "click" this.auth.sign_in_with_popup}}>Sign In</button>
+{{/if}}
+</div>
