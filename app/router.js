@@ -8,4 +8,12 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('testing');
+
+  this.route('deck_page', {
+    path: 'deck/:deck_id',
+  });
+
+  this.route('not_found', {
+    path: '/*path',
+  });
 });

@@ -1,3 +1,26 @@
 {{page-title "Kluvercards"}}
 
-{{outlet}}
+<header>
+  head bar
+</header>
+<div id="main">
+    <div id="sidebar">
+
+      <ul>
+        {{#each this.data as |deck|}}
+          <li>
+            <LinkTo @route="deck_page" @model={{deck.id}}>
+              {{deck.title}}
+            </LinkTo>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+    <main>
+    {{outlet}}
+    </main>
+</div>
+<footer></footer>
+
+
+

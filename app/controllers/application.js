@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { onSnapshot, query, where } from 'firebase/firestore';
 
-export default class TestingController extends Controller {
+export default class ApplicationController extends Controller {
   @service auth;
   @service decks;
   @service router;
@@ -33,8 +33,11 @@ export default class TestingController extends Controller {
       // loop over them and pull the data out.
       this.data = [];
       querySnapshot.forEach((doc) => {
-        this.data.push(doc.data());
+        const dat = doc.data()
+        dat['id'] = doc.id
+        this.data.push(dat);
       });
+      console.log(this.data)
     });
 
     // 4) when leaving the page unsubscribe.
@@ -43,11 +46,5 @@ export default class TestingController extends Controller {
         unsubscribe();
       }
     });
-  }
-
-  @action
-  newDeck() {
-    this.decks.newDeck(this.stackTitle);
-    this.stackTitle = '';
   }
 }
