@@ -1,26 +1,43 @@
 {{page-title "Kluvercards"}}
-
-<header>
-  head bar
-</header>
-<div id="main">
-    <div id="sidebar">
-
-      <ul>
-        {{#each this.data as |deck|}}
-          <li>
-            <LinkTo @route="deck_page" @model={{deck.id}}>
-              {{deck.title}}
-            </LinkTo>
-          </li>
-        {{/each}}
-      </ul>
+<section class="hero is-primary">
+    <LinkTo @route="index">
+      <div class="hero-body">
+        <p class="title">Kluver Cards</p>
+        <p class="subtitle">Study in peace</p>
+      </div>
+    </LinkTo>
+</section>
+<div class="columns">
+    <div class="column is-one-third">
+      <div class="box menu" {{on-auth-change this.refreshDeckListener}}>
+        {{#if this.auth.user }}
+          <p class="menu-label">decks</p>
+          <ul class="menu-list">
+            {{#each this.data as |deck|}}
+              <li>
+                <LinkTo @route="deck_page" @model={{deck.id}}>
+                  {{deck.title}}
+                </LinkTo>
+              </li>
+            {{/each}}
+          </ul>
+        {{/if}}
+        <LinkTo @route="testing">
+                  testing
+                </LinkTo>
+      </div>
     </div>
-    <main>
-    {{outlet}}
-    </main>
+    <div class="column">
+      <div class="section" >
+        {{outlet}}
+      </div>
+    </div>
 </div>
-<footer></footer>
-
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Kluver Cards</strong> is a website by Daniel Kluver. It's <em>fine.</em></p>
+  </div>
+</footer>
 
 

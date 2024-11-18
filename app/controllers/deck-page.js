@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import {  onSnapshot } from 'firebase/firestore';
+import { onSnapshot } from 'firebase/firestore';
 
 export default class DeckPageController extends Controller {
   // so we can track path changes.

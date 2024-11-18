@@ -1,6 +1,6 @@
 import Service from '@ember/service';
 import { service } from '@ember/service';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 import { getFirestore } from 'firebase/firestore';
 import { collection, doc, addDoc } from 'firebase/firestore';
 
