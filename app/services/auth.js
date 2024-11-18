@@ -14,6 +14,7 @@ import { tracked } from '@glimmer/tracking';
 
 export default class AuthService extends Service {
   @service firebase;
+  @service router;
 
   auth = getAuth(this.firebase.app);
 
@@ -26,8 +27,15 @@ export default class AuthService extends Service {
     this.user = this.auth.currentUser;
   }
 
+  async requireLogin() {
+    await this.ensureInitialized();
+    if (!this.user) {
+      this.router.transitionTo('index');
+    }
+  }
+
   async ensureLoggedIn() {
-    await this.ensureInitialized;
+    await this.ensureInitialized();
     if (!this.user) {
       throw new Error('NOT LOGGED IN');
     }
@@ -52,5 +60,7 @@ export default class AuthService extends Service {
   async sign_out() {
     console.log(this.auth.currentUser);
     signOut(this.auth);
+    // a bit foreceful, but it'll do.
+    this.router.transitionTo('index');
   }
 }

@@ -1,0 +1,11 @@
+<div>
+  {{#if this.auth.user}}
+      <figure class="image is-64x64 is-inline-block">
+        <img class="is-rounded" referrerpolicy="no-referrer" src="{{this.auth.user.photoURL}}">
+      </figure>
+      {{this.auth.user.displayName}}
+      <button class="button" type="button" {{on "click" this.auth.sign_out}}>Sign Out</button>
+  {{else}}
+      <button class="button" type="button" {{on "click" this.auth.sign_in_with_popup}}>Sign In</button>
+  {{/if}}
+</div>

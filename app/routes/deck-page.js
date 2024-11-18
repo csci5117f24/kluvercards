@@ -9,6 +9,8 @@ export default class DeckPageRoute extends Route {
   @service router;
 
   async model(params) {
+    await this.auth.requireLogin();
+
     const docRef = doc(this.decks.decksRef, params.deck_id);
     const docSnap = await getDoc(docRef);
 

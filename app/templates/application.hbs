@@ -10,6 +10,7 @@
 <div class="columns">
     <div class="column is-one-third">
       <div class="box menu" {{on-auth-change this.refreshDeckListener}}>
+        <Login-Button></Login-Button>
         {{#if this.auth.user }}
           <p class="menu-label">decks</p>
           <ul class="menu-list">
@@ -20,11 +21,11 @@
                 </LinkTo>
               </li>
             {{/each}}
+            <li>
+              <NewDeckButton></NewDeckButton>
+              </li>
           </ul>
         {{/if}}
-        <LinkTo @route="testing">
-                  testing
-                </LinkTo>
       </div>
     </div>
     <div class="column">

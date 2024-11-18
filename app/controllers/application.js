@@ -13,21 +13,17 @@ export default class ApplicationController extends Controller {
 
   @tracked data = [];
 
-  unsubscribe = null
+  unsubscribe = null;
 
   @action
   refreshDeckListener(user) {
-    console.log("goodby!")
     if (this.unsubscribe) {
       this.unsubscribe();
       this.unsubscribe = null;
     }
 
     if (user) {
-      const ref = query(
-        this.decks.decksRef,
-        where('owner', '==', user.uid),
-      );
+      const ref = query(this.decks.decksRef, where('owner', '==', user.uid));
 
       this.unsubscribe = onSnapshot(ref, (querySnapshot) => {
         // for lists, each "change" has a bunch of data elements in it.

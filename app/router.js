@@ -11,9 +11,11 @@ Router.map(function () {
 
   this.route('deck_page', {
     path: 'deck/:deck_id',
+    auth_required: true,
   });
 
   this.route('not_found', {
     path: '/*path',
   });
+  this.route('test2');
 });
