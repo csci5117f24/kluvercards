@@ -1,0 +1,19 @@
+<div>
+  {{#if (eq this.status "not started")}}
+    <input type="file"  accept="image/*" {{on "change" this.onChange}} />
+    {{#if this.chosenFile}}
+      <button class="button" type="button" {{on "click" this.upload}}>Upload</button>
+    {{else}}
+      <button class="button" disabled type="button" >Upload</button>
+    {{/if}}
+  {{/if}}
+  {{#if (eq this.status "started")}}
+    {{this.upload_state.bytesTransferred}}/{{this.upload_state.totalBytes}}
+    <progress id="file" value="{{this.upload_state.bytesTransferred}}" max="{{this.upload_state.totalBytes}}"> </progress>
+
+  {{/if}}
+  {{#if (eq this.status "done")}}
+    DONE
+  {{/if}}
+
+</div>

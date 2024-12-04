@@ -1,15 +1,13 @@
 {{page-title "Testing"}}
 {{outlet}}
 <div>
-{{#if this.auth.user}}
-<img referrerpolicy="no-referrer" src="{{this.auth.user.photoURL}}">{{this.auth.user.displayName}}
-    <button type="button" {{on "click" this.auth.sign_out}}>Sign Out</button>
-{{else}}
-    <button type="button" {{on "click" this.auth.sign_in_with_popup}}>Sign In</button>
-{{/if}}
+  <input type="file"  accept="image/*" {{on "change" this.onChange}} />
+  {{#if this.chosenFile}}
+    <button class="button" type="button" {{on "click" this.upload}}>Upload</button>
+  {{else}}
+    <button class="button" disabled type="button" >Upload</button>
+  {{/if}}
+
 </div>
 
-<div>
-  <Input type="text" @value={{this.stackTitle}} />
-  <button type="button" {{on "click" this.newDeck}}>Create!</button>
-</div>
+<Image-Upload></Image-Upload>

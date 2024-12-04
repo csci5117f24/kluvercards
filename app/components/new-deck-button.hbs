@@ -1,7 +1,7 @@
 {{#if this.auth.user}}
   {{#if this.open}}
-      <Input class="is-inline" @value={{this.newDeck}}></Input><button class="button is-inline" {{on "click" this.doAdd}}>+</button>
+      <Input class="is-inline" @value={{this.newDeck}}></Input><button class="button is-inline" type="button" {{on "click" this.doAdd}}>+</button>
   {{else}}
-      <button class="button" {{on "click" this.openUp}} >+</button>
+      <button class="button" type="button" {{on "click" this.openUp}} >+</button>
   {{/if}}
 {{/if}}

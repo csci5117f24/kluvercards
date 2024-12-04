@@ -5,12 +5,12 @@ import { tracked } from '@glimmer/tracking';
 import { addDoc } from 'firebase/firestore';
 
 export default class NewDeckButton extends Component {
-  @service auth
-  @service decks
+  @service auth;
+  @service decks;
 
-  @tracked open = false
+  @tracked open = false;
 
-  @tracked newDeck = ""
+  @tracked newDeck = '';
 
   @action
   openUp() {
@@ -20,8 +20,8 @@ export default class NewDeckButton extends Component {
   @action doAdd() {
     this.open = false;
     addDoc(this.decks.decksRef, {
-      owner:this.auth.user.uid,
+      owner: this.auth.user.uid,
       title: this.newDeck,
-    })
+    });
   }
 }
